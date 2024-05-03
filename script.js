@@ -127,5 +127,205 @@ const url1 = "https://www.youtube.com/home/feed/blog"
 //ek e rokom .startwith() je start hello dea hocce kina  
 
 
+// ===================== Array method  =================================
+
+//array length , .tostring() , array[arrayindex] , 
+
+let x = [1, "banana", 65, 78, 98]
+console.log(x.length); // 5 
+console.log(x.toString()); // 1,banana,65,78,98
 
 
+let x1 = [1, "banana", 65, 78, 98]
+console.log(x1[3]); // 3number index er value 78
+// alternate 
+console.log(x1.at(3)); // 3number index er value 78
+
+
+
+
+//.join() , .pop()
+//=======================================
+let x2 = ["nishat", "banana", 65, 78, 98]
+console.log(x2.join(" => ")); 
+console.log(x2.pop()); // answer : 98 array last element deleted  kore
+console.log(x2);[ 'nishat', 'banana', 65, 78 ]
+
+//.push() , .pop()
+//=======================================
+let x3 = ["nishat", "banana", 65, 78, 98]
+let x4 = x3.push(25); // array last upadan e probes korai 
+console.log(x3); //  [ 'nishat', 'banana', 65, 78, 98, 25 ]
+console.log(x3.pop());
+console.log(x3); // [ 'nishat', 'banana', 65, 78, 98 ]
+
+// .shift() , .unsift()
+//=======================================\
+
+// shift er kalato vai  = pop()
+let x6 = ["nishat", "banana", 65, 78, 98];
+console.log(x6.shift()); // pop er kalato vai  ,  just protom theke del kore
+console.log(x6); // [ 'banana', 65, 78, 98 ]
+
+// unshift er kalato vai  = push()
+let x7 = ["nishat", "banana", 65, 78, 98];
+console.log(x7.unshift("ikra")); // push er kalato vai  ,  just protom theke add kore 
+console.log(x7); // [ 'ikra', 'nishat', 'banana', 65, 78, 98 ]
+
+/// shadow delete er kaj 
+
+let x8 = ["nishat", "banana", 65, 78, 98];
+delete x8[1]
+console.log(x8); // shadow del [ 'nishat', <1 empty item>, 65, 78, 98 ] // not permanent del 
+
+// permanent del er kaj  == splice()
+// splice (1 ,2) == 1 number index theke suru hoba , 2ta item katba i,e :  1number item and 2nd number item 
+// splice (1 ,2,"hello") == 1 number index theke suru hoba , 2ta item katba i,e :  1number item and 2nd number item and then 1 number index e hello bosaba . 
+
+let x9 = ["nishat", "banana", 65, 78, 98];
+let x10 = x9.splice(1,2)
+
+console.log(x10); // ja katce taholo [ 'banana', 65 ]
+console.log(x9); // [ 'nishat', 78, 98 ]
+
+
+// ekon x9 = ["nishat", "banana", 65, 78, 98]
+let x11 = x9.splice(1,2,"hello")
+console.log(x9); // [ 'nishat', 'hello' ]
+
+// mostly important : kono aaray maje jodi element add korte cie tahole 
+// use splice(1,0,"Ikra", "zoom")
+let x12 = ["nishat", "banana", 65, 78, 98];
+x12.splice(1,0,"ikra", "zoom"); // 1number index e jaw , 0 mane kono element del korba na and "Ikra", "zoom" 2ta element bosa
+// banana tarpor automatic bosbe
+console.log(x12); // [ 'nishat', 'ikra', 'zoom', 'banana', 65, 78, 98 ]
+
+// oke ami cie 1number index del hoe oi 2ta bosbe 
+let x13 = ["nishat", "banana", 65, 78, 98];
+x13.splice(1,1,"ikra", "zoom"); // 1number index e jaw , 0 mane kono element del korba na and "Ikra", "zoom" 2ta element bosa
+console.log(x13); // [ 'nishat', 'ikra', 'zoom', 65, 78, 98 ]
+
+
+let x14 = ["nishat", "banana", 65, 78, 98];
+let x15 = x14.slice(3); // by default se 0,1,2 ke del kore dise , and bakitoko, [ 78, 98 ]
+console.log(x15); // [ 78, 98 ]
+
+// arravajavaja korte taufik69 deken 
+
+// fill
+
+let x16 = ["nishat", "banana", 65, 78, 98];
+console.log(x16.fill("ikra"));// [ 'ikra', 'ikra', 'ikra', 'ikra', 'ikra' ]
+
+let x17 = ["nishat", "banana", 65, 78, 98];
+console.log(x17.fill("ikra",1));// [ 'nishat', 'ikra', 'ikra', 'ikra', 'ikra' ]
+
+
+// mostly important : foreach() ,.map()
+
+
+let x18 = ["nishat", "banana", 65, 78, 98];
+x18.forEach((item) =>{
+console.log(item);
+}
+
+)
+// proti itme indiviually deka jacce 
+// nishat
+// banana
+// 65
+// 78
+// 98
+
+// let x19 = ["nishat", "banana", 65, 78, 98];
+// x19.forEach((item,index) =>{
+// console.log(item,index);
+// }
+
+// )
+// nishat 0
+// banana 1
+// 65 2
+// 78 3
+// 98 4
+
+// for each function : foreach new aarray create kore na
+// for each function dom e loop korte pare
+// array and node list 2 ta kei loop korate pare foreach
+let x20 = ["nishat", "is", "frontend", "developer"]
+x20.forEach((item,index,arr)=> {
+    console.log(item,index,arr);
+}
+)
+/**
+ * nishat 0 [ 'nishat', 'is', 'frontend', 'developer' ] // nishat 0 number index a  , sate array o dekai dise
+is 1 [ 'nishat', 'is', 'frontend', 'developer' ] // is 1 number index a  , sate array o dekai dise
+frontend 2 [ 'nishat', 'is', 'frontend', 'developer' ] etc
+developer 3 [ 'nishat', 'is', 'frontend', 'developer' ] etc
+ *
+ */
+
+let x21 = ["nishat", "frontend", "developer"]
+x21.forEach((item,index,arr)=>{
+    console.log(item,index,arr);
+}
+
+)
+/***
+ * nishat 0 [ 'nishat', 'frontend', 'developer' ]
+frontend 1 [ 'nishat', 'frontend', 'developer' ]
+developer 2 [ 'nishat', 'frontend', 'developer' ]
+ */
+
+// map function : map create new array 
+// map function dom e loop korte pare na
+// array list ke parle o nodelist ke pare na foreach
+
+let x22 = ["nishat", "will" , "be", "Modern"]
+x22.map((item,index,arr)=>{
+console.log(item,index,arr);
+}
+
+)
+
+/**
+ * nishat 0 [ 'nishat', 'will', 'be', 'Modern' ]
+will 1 [ 'nishat', 'will', 'be', 'Modern' ]
+be 2 [ 'nishat', 'will', 'be', 'Modern' ]
+Modern 3 [ 'nishat', 'will', 'be', 'Modern' ]
+ */
+
+let studentNames =["jhon", "patrik", "rifu"]
+studentNames.map(names=> console.log(names.toLowerCase())) 
+// jhon 
+//patrik
+// rifu
+
+let studentNamess =["jhon", "patrik", "rifu"]
+studentNamess.forEach(names=> console.log(names.toLowerCase())) 
+// jhon 
+//patrik
+// rifu
+
+// whats the difference ?
+
+let studentNamesss =["jhon", "patrik", "rifu"]
+console.log(studentNamesss.forEach(names => names.toLowerCase())); // undefined ,  foreach new array dei na
+console.log(studentNamesss.map(names=> names.toLowerCase())); // [ 'jhon', 'patrik', 'rifu' ] , new array dei
+
+
+let studentName2 =["jhon", "patrik", "rifu"]
+let forEachfunc = studentName2.forEach(names=> names.toUpperCase())
+console.log(studentName2); // [ 'jhon', 'patrik', 'rifu' ]
+console.log(forEachfunc); // undefined
+
+let studentName3 =["jhon", "patrik", "rifu"]
+let forEachfunc1 = studentName3.map(names=> names.toUpperCase())
+console.log(studentName3); // [ 'jhon', 'patrik', 'rifu' ] 
+console.log(forEachfunc1); // [ 'JHON', 'PATRIK', 'RIFU' ] just parent ke change korse
+console.log(studentName3); // [ 'jhon', 'patrik', 'rifu' ] parent er array kintu change hoi nai
+
+let x50 = ["nishat", "banana", 65, 78, 98]
+        let x51 = x50.splice(1,2,"hello")
+        console.log(x51); //  [ 'banana', 65 ] 
+        console.log(x50); // [ 'nishat', 'hello', 78, 98 ]
